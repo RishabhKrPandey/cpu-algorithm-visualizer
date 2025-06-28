@@ -1,5 +1,6 @@
 import { Bar } from "react-chartjs-2";
 import { Chart, BarElement, CategoryScale, LinearScale } from "chart.js";
+import "./GanttChart.css";
 
 Chart.register(BarElement, CategoryScale, LinearScale);
 
@@ -30,8 +31,8 @@ export default function GanttChart({ ganttData }) {
   };
 
   return (
-    <div className="mt-8">
-      <h3 className="text-xl font-semibold mb-2">Gantt Chart</h3>
+    <div className="gantt-chart">
+      <h3>Gantt Chart</h3>
       <Bar data={data} options={options} />
     </div>
   );

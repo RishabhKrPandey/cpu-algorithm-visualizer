@@ -1,0 +1,28 @@
+/* ProcessTable.css */
+
+.process-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  background: #fff;
+}
+
+.process-table th,
+.process-table td {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.process-table thead {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.process-table input[type="number"] {
+  width: 60px;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}

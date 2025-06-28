@@ -1,6 +1,18 @@
-export function calculateScheduling(algorithm, processes, setProcesses, setGanttData, setAverages) {
+export function calculateScheduling(
+  algorithm,
+  processes,
+  setProcesses,
+  setGanttData,
+  setAverages
+) {
   // Deep copy to avoid mutating React state directly
-  let proc = processes.map(p => ({ ...p, ct: 0, tat: 0, wt: 0, remainingBt: p.bt }));
+  let proc = processes.map((p) => ({
+    ...p,
+    ct: 0,
+    tat: 0,
+    wt: 0,
+    remainingBt: p.bt,
+  }));
   let ganttData = [];
 
   switch (algorithm) {
@@ -33,12 +45,12 @@ export function calculateScheduling(algorithm, processes, setProcesses, setGantt
   setAverages(calcAvg(proc));
 }
 
-// FCFS scheduling logic
+
 function fcfs(processes, ganttData) {
   processes.sort((a, b) => a.at - b.at);
   let currentTime = 0;
 
-  processes.forEach(p => {
+  processes.forEach((p) => {
     if (currentTime < p.at) currentTime = p.at;
     const start = currentTime;
     currentTime += p.bt;
@@ -50,13 +62,16 @@ function fcfs(processes, ganttData) {
   });
 }
 
-// SJF Non-Preemptive
+
 function sjf(processes, ganttData) {
   processes.sort((a, b) => a.at - b.at);
-  let currentTime = 0, completed = 0;
+  let currentTime = 0,
+    completed = 0;
+
+  const isReady = (p, time) => p.at <= time && p.ct === 0;
 
   while (completed < processes.length) {
-    const ready = processes.filter(p => p.at <= currentTime && p.ct === 0);
+    const ready = processes.filter((p) => isReady(p, currentTime));
     ready.sort((a, b) => a.bt - b.bt);
 
     if (ready.length) {
@@ -74,19 +89,26 @@ function sjf(processes, ganttData) {
   }
 }
 
-// SJF Preemptive
+
 function psjf(processes, ganttData) {
-  let currentTime = 0, completed = 0;
+  let currentTime = 0,
+    completed = 0;
   let lastPid = null;
 
+  const isReady = (p, time) => p.at <= time && p.remainingBt > 0;
+
   while (completed < processes.length) {
-    const ready = processes.filter(p => p.at <= currentTime && p.remainingBt > 0);
+    const ready = processes.filter((p) => isReady(p, currentTime));
     ready.sort((a, b) => a.remainingBt - b.remainingBt);
 
     if (ready.length) {
       const p = ready[0];
       if (lastPid !== p.id) {
-        ganttData.push({ pid: p.id, start: currentTime, end: currentTime + 1 });
+        ganttData.push({
+          pid: p.id,
+          start: currentTime,
+          end: currentTime + 1,
+        });
       } else {
         ganttData[ganttData.length - 1].end++;
       }
@@ -106,13 +128,16 @@ function psjf(processes, ganttData) {
   }
 }
 
-// Priority Non-Preemptive
+
 function priority(processes, ganttData) {
   processes.sort((a, b) => a.at - b.at);
-  let currentTime = 0, completed = 0;
+  let currentTime = 0,
+    completed = 0;
+
+  const isReady = (p, time) => p.at <= time && p.ct === 0;
 
   while (completed < processes.length) {
-    const ready = processes.filter(p => p.at <= currentTime && p.ct === 0);
+    const ready = processes.filter((p) => isReady(p, currentTime));
     ready.sort((a, b) => a.priority - b.priority);
 
     if (ready.length) {
@@ -130,19 +155,26 @@ function priority(processes, ganttData) {
   }
 }
 
-// Priority Preemptive
+
 function ppriority(processes, ganttData) {
-  let currentTime = 0, completed = 0;
+  let currentTime = 0,
+    completed = 0;
   let lastPid = null;
 
+  const isReady = (p, time) => p.at <= time && p.remainingBt > 0;
+
   while (completed < processes.length) {
-    const ready = processes.filter(p => p.at <= currentTime && p.remainingBt > 0);
+    const ready = processes.filter((p) => isReady(p, currentTime));
     ready.sort((a, b) => a.priority - b.priority);
 
     if (ready.length) {
       const p = ready[0];
       if (lastPid !== p.id) {
-        ganttData.push({ pid: p.id, start: currentTime, end: currentTime + 1 });
+        ganttData.push({
+          pid: p.id,
+          start: currentTime,
+          end: currentTime + 1,
+        });
       } else {
         ganttData[ganttData.length - 1].end++;
       }
@@ -162,7 +194,6 @@ function ppriority(processes, ganttData) {
   }
 }
 
-// Round Robin
 function roundRobin(processes, ganttData, quantum) {
   let queue = [...processes];
   let currentTime = 0;
@@ -185,9 +216,14 @@ function roundRobin(processes, ganttData, quantum) {
   }
 }
 
+
 function calcAvg(processes) {
   const n = processes.length;
-  const avgWT = (processes.reduce((s, p) => s + p.wt, 0) / n).toFixed(2);
-  const avgTAT = (processes.reduce((s, p) => s + p.tat, 0) / n).toFixed(2);
+  const avgWT = (
+    processes.reduce((s, p) => s + p.wt, 0) / n
+  ).toFixed(2);
+  const avgTAT = (
+    processes.reduce((s, p) => s + p.tat, 0) / n
+  ).toFixed(2);
   return { avgWT, avgTAT };
 }

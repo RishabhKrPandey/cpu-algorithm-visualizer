@@ -5,6 +5,7 @@ import ProcessTable from "./components/ProcessTable";
 import GanttChart from "./components/GanttChart";
 import Averages from "./components/Averages";
 import { calculateScheduling } from "./utils/calculateScheduling";
+import './App.css'
 
 export default function App() {
   const [algorithm, setAlgorithm] = useState("FCFS");

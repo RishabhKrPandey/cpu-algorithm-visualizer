@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import "./Controls.css";
 
 export default function Controls({ processes, setProcesses }) {
   const addProcess = () => {
@@ -18,17 +19,9 @@ export default function Controls({ processes, setProcesses }) {
   };
 
   return (
-    <div className="space-x-3 mb-4">
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-        onClick={addProcess}
-      >
-        Add Process
-      </button>
-      <button
-        className="bg-red-500 text-white px-4 py-2 rounded"
-        onClick={removeProcess}
-      >
+    <div className="controls">
+      <button onClick={addProcess}>Add Process</button>
+      <button className="remove" onClick={removeProcess}>
         Remove Last Process
       </button>
     </div>

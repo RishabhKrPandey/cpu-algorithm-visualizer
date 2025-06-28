@@ -1,0 +1,17 @@
+/* AlgorithmSelector.css */
+
+.algorithm-selector {
+  margin-bottom: 1rem;
+}
+
+.algorithm-selector label {
+  margin-right: 0.5rem;
+  font-weight: 600;
+}
+
+.algorithm-selector select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #333;
+  border-radius: 4px;
+}

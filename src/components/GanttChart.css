@@ -1,0 +1,19 @@
+/* GanttChart.css */
+
+.gantt-chart {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.gantt-chart h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.gantt-chart canvas {
+  margin: 0 auto;
+  display: block;
+  border: 1px solid #333;
+  background: #fff;
+}

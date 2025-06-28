@@ -1,0 +1,14 @@
+/* Averages.css */
+
+.averages {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.averages p {
+  font-size: 1.1rem;
+}
+
+.averages strong {
+  font-weight: bold;
+}

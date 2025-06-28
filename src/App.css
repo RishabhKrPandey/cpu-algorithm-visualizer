@@ -1,0 +1,66 @@
+/* App.css */
+
+/* Overall page */
+body {
+  background: #f9fafb;
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main container */
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px 40px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+main h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+/* Algorithm selector, Controls, ProcessTable inherit their own CSS */
+
+/* Compute button */
+main button {
+  display: block;
+  background: #28a745;
+  border: none;
+  padding: 12px 24px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 30px auto 0 auto;
+  transition: background 0.3s ease;
+}
+
+main button:hover {
+  background: #218838;
+}
+
+/* Averages section */
+main p {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+main strong {
+  font-weight: bold;
+}
+
+/* Chart container */
+main .gantt-chart {
+  margin-top: 40px;
+}
