@@ -12,6 +12,7 @@ export default function App() {
   const [processes, setProcesses] = useState([]);
   const [ganttData, setGanttData] = useState([]);
   const [averages, setAverages] = useState({ avgWT: 0, avgTAT: 0 });
+  // 
 
   return (
     <main className="p-8 max-w-5xl mx-auto">
