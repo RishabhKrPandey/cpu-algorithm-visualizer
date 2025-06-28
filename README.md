@@ -35,7 +35,8 @@ Modify processes dynamically using "Add Process" and "Remove Process."
 
 ![image](https://github.com/user-attachments/assets/b5aa1210-bcd5-47cb-9ce0-3e5534f8f994)
 
-![image](https://github.com/user-attachments/assets/eb8cfbe7-4c76-44ea-a216-2b72aeb3cbf2)
+![image](![image](https://github.com/user-attachments/assets/d70f09c1-268b-45d9-9b36-c5d3f7f2c12e)
+)
 
 
 
